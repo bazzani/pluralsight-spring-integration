@@ -1,0 +1,27 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="jesperdj/h2" type="docker-deploy" factoryName="docker-image" server-name="Docker">
+    <deployment type="docker-image">
+      <settings>
+        <option name="imageTag" value="jesperdj/h2" />
+        <option name="command" value="" />
+        <option name="containerName" value="h2" />
+        <option name="entrypoint" value="" />
+        <option name="portBindings">
+          <list>
+            <DockerPortBindingImpl>
+              <option name="containerPort" value="8082" />
+              <option name="hostPort" value="8082" />
+            </DockerPortBindingImpl>
+            <DockerPortBindingImpl>
+              <option name="containerPort" value="9092" />
+              <option name="hostIp" value="90" />
+              <option name="hostPort" value="9092" />
+            </DockerPortBindingImpl>
+          </list>
+        </option>
+        <option name="commandLineOptions" value="-d" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>
