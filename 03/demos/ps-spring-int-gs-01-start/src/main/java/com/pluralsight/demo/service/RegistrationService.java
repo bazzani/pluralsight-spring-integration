@@ -1,20 +1,11 @@
 package com.pluralsight.demo.service;
 
-import com.pluralsight.demo.database.Attendee;
-import com.pluralsight.demo.database.AttendeeTicket;
-import com.pluralsight.demo.database.AttendeeTicketRepository;
-import com.pluralsight.demo.database.DiscountCode;
-import com.pluralsight.demo.database.DiscountCodeRepository;
-import com.pluralsight.demo.database.PricingCategory;
-import com.pluralsight.demo.database.PricingCategoryRepository;
-import com.pluralsight.demo.database.TicketPrice;
-import com.pluralsight.demo.database.TicketPriceRepository;
-import com.pluralsight.demo.database.TicketType;
-import com.pluralsight.demo.database.TicketTypeRepository;
+import com.pluralsight.demo.database.*;
 import com.pluralsight.demo.model.AttendeeRegistration;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,6 +38,7 @@ public class RegistrationService {
         this.ticketTypeRepository = ticketTypeRepository;
     }
 
+    @ServiceActivator(inputChannel = "registrationRequest")
     public void register(AttendeeRegistration registration) {
         LOG.debug("Registration received for: {}", registration.getEmail());
 
