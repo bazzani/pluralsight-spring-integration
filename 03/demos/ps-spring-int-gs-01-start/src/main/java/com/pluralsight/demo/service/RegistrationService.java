@@ -5,7 +5,6 @@ import com.pluralsight.demo.model.AttendeeRegistration;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
@@ -40,7 +39,6 @@ public class RegistrationService {
         this.ticketTypeRepository = ticketTypeRepository;
     }
 
-    @ServiceActivator(inputChannel = "registrationRequest")
     public void register(@Header("dateTime") OffsetDateTime dateTime,
                          @Payload AttendeeRegistration registration) {
         LOG.debug("Registration received for: {}", registration.getEmail());
